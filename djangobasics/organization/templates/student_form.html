@@ -1,0 +1,64 @@
+<head>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        form label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        form button[type="submit"] {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="{{ form.name.id_for_label }}">Name</label>
+        {{ form.name }}
+    </div>
+    <div>
+        <label for="{{ form.age.id_for_label }}">Age</label>
+        {{ form.age }}
+    </div>
+    <div>
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {{ form.email }}
+    </div>
+    <div>
+        <label for="{{ form.address.id_for_label }}">Address</label>
+        {{ form.address }}
+    </div>
+    <div>
+        <label for="{{ form.date_of_birth.id_for_label }}">Date of Birth</label>
+        {{ form.date_of_birth }}
+    </div>
+    <button type="submit">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+</form>
+
